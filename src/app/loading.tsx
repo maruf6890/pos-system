@@ -4,7 +4,7 @@ import { Loader2 } from "lucide-react";
 
 export default function GlobalLoading() {
   return (
-    <div className="bg-[#00030C] min-h-screen flex flex-col text-white">
+    <div className="bg-white min-h-screen flex flex-col text-white">
       <BasicHeader />
 
       <main className="flex-grow flex flex-col justify-center items-center text-center px-4 space-y-6">

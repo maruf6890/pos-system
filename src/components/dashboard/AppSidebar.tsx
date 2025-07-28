@@ -25,6 +25,9 @@ import {
   BarChart3,
   MessageSquare,
   Ticket,
+  ShoppingCart,
+  ShoppingBasket,
+  ShoppingBag,
 } from "lucide-react";
 
 type MenuItem = {
@@ -39,7 +42,7 @@ export const sidebarMenu: MenuItem[] = [
   {
     id: "dashboard",
     titleKey: "dashboard",
-    url: "/dashboard",
+    url: "/",
     icon: Home,
     role: "common",
   },
@@ -47,21 +50,15 @@ export const sidebarMenu: MenuItem[] = [
     id: "pos",
     titleKey: "pos",
     url: "/pos",
-    icon: CreditCard,
+    icon: ShoppingCart,
     role: "common",
   },
-  {
-    id: "inventory",
-    titleKey: "inventory",
-    url: "/inventory",
-    icon: Building,
-    role: "common",
-  },
+
   {
     id: "products",
     titleKey: "products",
     url: "/products",
-    icon: Users,
+    icon: ShoppingBag,
     role: "common",
   },
   {

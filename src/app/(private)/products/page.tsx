@@ -17,7 +17,7 @@ export default function page() {
       <SidebarProvider>
         <ProductsPage />
         
-        <PosSidebar />
+    
       </SidebarProvider>
     </div>
   );
