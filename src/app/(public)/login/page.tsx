@@ -1,5 +1,4 @@
 "use client";
-
 import { useState } from "react";
 import { Eye, EyeClosed } from "lucide-react";
 import Image from "next/image";
@@ -7,22 +6,24 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { InteractiveHoverButton } from "@/components/magicui/interactive-hover-button";
 import { DotPattern } from "@/components/magicui/dot-pattern";
+import { cn } from "@/lib/utils";
 
 export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false);
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 via-white to-white font-sans text-gray-900 px-4">
-     
-      <div className="w-full max-w-md bg-white rounded-lg p-8 shadow-lg border border-gray-200">
+      {/* Background Pattern */}
+
+      <div className="w-full max-w-md bg-white rounded-lg p-8 shadow-lg border border-gray-200 z-50">
         {/* Logo */}
         <div className="mb-6 flex justify-center">
           <Image
-            src="/images/logo.webp"
+            src="/images/logo.png"
             alt="Logo"
-            width={120}
+            width={200}
             height={40}
-            className="filter brightness-0" 
+            className=""
           />
         </div>
 
@@ -67,12 +68,12 @@ export default function LoginPage() {
           </div>
 
           {/* Forgot Password */}
-          <div className="text-right text-sm text-purple-600 hover:text-purple-800 cursor-pointer hover:underline">
+          <div className="text-right text-sm text-[#ff3d6e] hover:text-[#ff3d6e]/80 cursor-pointer hover:underline">
             Forgot Password?
           </div>
 
           {/* Submit Button */}
-          <InteractiveHoverButton className="w-full text-center text-white bg-purple-600 hover:bg-purple-700 border-transparent flex items-center justify-center">
+          <InteractiveHoverButton className="w-full text-center text-white bg-[#ff3d6e] hover:bg-[#ff3d6e]/80 border-transparent flex items-center justify-center">
             Sign In
           </InteractiveHoverButton>
         </form>
@@ -80,11 +81,19 @@ export default function LoginPage() {
         {/* Signup Link */}
         <div className="text-sm text-center mt-6 text-gray-600">
           Don't have an account?{" "}
-          <span className="text-purple-600 hover:text-purple-800 hover:underline cursor-pointer">
+          <span className="text-[#ff3d6e] hover:text-[#ff3d6e]/80 hover:underline cursor-pointer">
             Sign up
           </span>
         </div>
       </div>
+      <DotPattern
+        width={20}
+        height={20}
+        cx={1}
+        cy={1}
+        cr={1}
+        className={cn(" ")}
+      />
     </div>
   );
 }
