@@ -1,0 +1,229 @@
+{
+  "shopkeepers": [
+    {
+      "id": "keeper-001",
+      "name": "Md. Rahim Uddin",
+      "contact": {
+        "phone": "01712345678",
+        "altPhone": "01812345678",
+        "email": "rahim.shop@example.com",
+        "whatsapp": "01712345678"
+      },
+      "address": {
+        "division": "Dhaka",
+        "district": "Dhaka",
+        "cityOrUpazila": "Dhaka",
+        "areaOrUnion": "Mirpur",
+        "villageOrZone": "Sector 10",
+        "landmark": "Near Mirpur-10 Market"
+      },
+      "joined": null,
+      "employment": {
+        "joined": "2020-05-15",
+        "status": "Active"
+      },
+      "verification": {
+        "isVerified": true,
+        "documents": ["NID", "Trade License"]
+      }
+    },
+    {
+      "id": "keeper-002",
+      "name": "Fatima Begum",
+      "contact": {
+        "phone": "01911223344",
+        "altPhone": "01511223344",
+        "whatsapp": "01911223344"
+      },
+      "address": {
+        "division": "Chittagong",
+        "district": "Chittagong",
+        "cityOrUpazila": "Chittagong",
+        "areaOrUnion": "Agrabad",
+        "landmark": "Opposite Agrabad Shopping Complex"
+      },
+      "joined": null,
+      "employment": {
+        "joined": "2019-11-10",
+        "status": "Active"
+      },
+      "verification": {
+        "isVerified": true,
+        "documents": ["NID"]
+      }
+    },
+    {
+      "id": "keeper-003",
+      "name": "Abdul Karim",
+      "contact": {
+        "phone": "01612345678"
+      },
+      "address": {
+        "division": "Rajshahi",
+        "district": "Rajshahi",
+        "cityOrUpazila": "Rajshahi",
+        "areaOrUnion": "Shaheb Bazar",
+        "villageOrZone": "Sector 5",
+        "landmark": "Near Police Box"
+      },
+      "joined": null,
+      "employment": {
+        "joined": "2021-02-28",
+        "status": "Inactive"
+      },
+      "verification": {
+        "isVerified": false,
+        "documents": []
+      }
+    },
+    {
+      "id": "keeper-004",
+      "name": "Shahin Alam",
+      "contact": {
+        "phone": "01798765432",
+        "email": "shahin.foods@example.com"
+      },
+      "address": {
+        "division": "Sylhet",
+        "district": "Sylhet",
+        "cityOrUpazila": "Sylhet",
+        "areaOrUnion": "Zindabazar",
+        "roadNumber": "7",
+        "landmark": "Next to Al Hamra Mosque"
+      },
+      "joined": null,
+      "employment": {
+        "joined": "2022-01-15",
+        "status": "Active"
+      },
+      "verification": {
+        "isVerified": true,
+        "documents": ["NID"]
+      }
+    },
+    {
+      "id": "keeper-005",
+      "name": "Nusrat Jahan",
+      "contact": {
+        "phone": "01987654321",
+        "whatsapp": "01987654321"
+      },
+      "address": {
+        "division": "Khulna",
+        "district": "Khulna",
+        "cityOrUpazila": "Khulna",
+        "areaOrUnion": "Khalishpur",
+        "houseNumber": "45",
+        "landmark": "Beside Khalishpur High School"
+      },
+      "joined": null,
+      "employment": {
+        "joined": "2020-08-20",
+        "status": "Active"
+      },
+      "verification": {
+        "isVerified": true,
+        "documents": ["NID"]
+      }
+    },
+    {
+      "id": "keeper-006",
+      "name": "Kamal Hossain",
+      "contact": {
+        "phone": "01876543210",
+        "altPhone": "01676543210"
+      },
+      "address": {
+        "division": "Barisal",
+        "district": "Barisal",
+        "cityOrUpazila": "Barisal",
+        "areaOrUnion": "Nathullabad",
+        "roadNumber": "3",
+        "landmark": "Near Nathullabad Bus Stand"
+      },
+      "joined": null,
+      "employment": {
+        "joined": "2021-07-12",
+        "status": "Active"
+      },
+      "verification": {
+        "isVerified": false,
+        "documents": []
+      }
+    },
+    {
+      "id": "keeper-007",
+      "name": "Ayesha Akter",
+      "contact": {
+        "phone": "01711223344",
+        "email": "ayesha.tailor@example.com"
+      },
+      "address": {
+        "division": "Rangpur",
+        "district": "Rangpur",
+        "cityOrUpazila": "Rangpur",
+        "areaOrUnion": "Station Road",
+        "landmark": "Opposite Railway Station"
+      },
+      "joined": null,
+      "employment": {
+        "joined": "2023-01-05",
+        "status": "Active"
+      },
+      "verification": {
+        "isVerified": true,
+        "documents": ["NID"]
+      }
+    },
+    {
+      "id": "keeper-008",
+      "name": "Jamal Uddin",
+      "contact": {
+        "phone": "01912341234",
+        "whatsapp": "01912341234"
+      },
+      "address": {
+        "division": "Mymensingh",
+        "district": "Mymensingh",
+        "cityOrUpazila": "Mymensingh",
+        "areaOrUnion": "Notun Bazar",
+        "landmark": "Near Notun Bazar Mosque"
+      },
+      "joined": null,
+      "employment": {
+        "joined": "2018-09-30",
+        "status": "Inactive"
+      },
+      "verification": {
+        "isVerified": true,
+        "documents": ["NID"]
+      }
+    },
+    {
+      "id": "keeper-009",
+      "name": "Sabina Yasmin",
+      "contact": {
+        "phone": "01698765432",
+        "altPhone": "01798765432",
+        "email": "sabina.pharma@example.com"
+      },
+      "address": {
+        "division": "Dhaka",
+        "district": "Dhaka",
+        "cityOrUpazila": "Dhaka",
+        "areaOrUnion": "Dhanmondi",
+        "roadNumber": "15",
+        "landmark": "Near Dhanmondi Lake"
+      },
+      "joined": null,
+      "employment": {
+        "joined": "2022-03-18",
+        "status": "Active"
+      },
+      "verification": {
+        "isVerified": true,
+        "documents": ["NID", "Trade License"]
+      }
+    }
+  ]
+}

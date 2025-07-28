@@ -1,0 +1,112 @@
+[
+  {
+    "id": 1,
+    "name": "Anker Nano 30W USB-C Adapter",
+    "quantity": 1,
+    "regular_price": 2000,
+    "discount": "10%",
+    "special_price": 1800,
+    "company": "Anker",
+    "image": "images/product/Anker-Nano-30W-USB-C-Adapter-iPhone-15-Series-A2337-1.webp",
+    "category": "Charger"
+  },
+  {
+    "id": 2,
+    "name": "Baseus GoPlay 1 Max 3.5mm Jack Gaming Headset",
+    "quantity": 1,
+    "regular_price": 2500,
+    "discount": "12%",
+    "special_price": 2200,
+    "company": "Baseus",
+    "image": "images/product/Baseus-GoPlay-1-Max-3.5mm-Jack-Gaming-Wired-Headphone-1.png",
+    "category": "Headset"
+  },
+  {
+    "id": 3,
+    "name": "Hoco EQ17 ANC ENC TWS",
+    "quantity": 1,
+    "regular_price": 3000,
+    "discount": "15%",
+    "special_price": 2550,
+    "company": "Hoco",
+    "image": "images/product/Hoco-EQ17-ANCENC-TWS-1.png",
+    "category": "Earbuds"
+  },
+  {
+    "id": 4,
+    "name": "Hoco J101B 22.5W 30000mAh Fast Charger",
+    "quantity": 1,
+    "regular_price": 3500,
+    "discount": "10%",
+    "special_price": 3150,
+    "company": "Hoco",
+    "image": "images/product/Hoco-J101B-22.5W-30000mAh-Fast-Charging-Power-Bank-600x600.webp",
+    "category": "Power Bank"
+  },
+  {
+    "id": 5,
+    "name": "Hoco Q39 Eminete 22.5W PD20W 20000mAh Power Bank",
+    "quantity": 1,
+    "regular_price": 2800,
+    "discount": "7%",
+    "special_price": 2604,
+    "company": "Hoco",
+    "image": "images/product/Hoco-Q39-Eminete-22.5WPD20W-20000mAh-Power-Bank-600x600.webp",
+    "category": "Power Bank"
+  },
+  {
+    "id": 6,
+    "name": "Hoco Y31 Bluetooth Calling Smart Watch",
+    "quantity": 1,
+    "regular_price": 2700,
+    "discount": "10%",
+    "special_price": 2430,
+    "company": "Hoco",
+    "image": "images/product/Hoco-Y31-Bluetooth-Calling-Smart-Watch-1-250x250.webp",
+    "category": "Smart Watch"
+  },
+  {
+    "id": 7,
+    "name": "Logitech M196 Bluetooth Mouse",
+    "quantity": 1,
+    "regular_price": 850,
+    "discount": "5%",
+    "special_price": 807.5,
+    "company": "Logitech",
+    "image": "images/product/Logitech-M196-Bluetooth-Mouse-1-250x250.png",
+    "category": "Mouse"
+  },
+  {
+    "id": 8,
+    "name": "Oraimo Watch 5R OSW-820 Smart Watch",
+    "quantity": 1,
+    "regular_price": 3000,
+    "discount": "10%",
+    "special_price": 2700,
+    "company": "Oraimo",
+    "image": "images/product/Oraimo-Watch-5R-OSW-820-Smart-Watch-1-250x250.webp",
+    "category": "Smart Watch"
+  },
+  {
+    "id": 9,
+    "name": "Planet Wireless Smart Charger Alarm Clock",
+    "quantity": 1,
+    "regular_price": 2200,
+    "discount": "8%",
+    "special_price": 2024,
+    "company": "Planet",
+    "image": "images/product/Planet-Wireless-Smart-Charger-Alarm-Clock-Bluetooth-Speaker-1-500x500.jpg",
+    "category": "Smart Device"
+  },
+  {
+    "id": 10,
+    "name": "Xiaomi C500 Pro Smart Camera",
+    "quantity": 1,
+    "regular_price": 3800,
+    "discount": "10%",
+    "special_price": 3420,
+    "company": "Xiaomi",
+    "image": "images/product/Xiaomi-C500-Pro-Smart-Camera-600x600.webp",
+    "category": "Smart Camera"
+  }
+]

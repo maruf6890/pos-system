@@ -1,0 +1,18 @@
+{
+  "HomePage": {
+    "title": "হোম"
+  },
+  "Menu": {
+    "dashboard": "ড্যাশবোর্ড",
+    "pos": "বিক্রয় (POS)",
+    "inventory": "স্টক",
+    "products": "পণ্য",
+    "customers": "কাস্টমার",
+    "supplier": "সরবরাহকারী",
+    "reports": "রিপোর্টস",
+    "selling": "বিক্রয়",
+    "shopkeepers": "দোকানদার",
+    "logs": "লগসমূহ",
+    "sellingHistory": "বিক্রয় ইতিহাস"
+  }
+}

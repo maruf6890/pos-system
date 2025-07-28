@@ -1,0 +1,147 @@
+
+[
+  {
+    "id": "cus-001",
+    "name": "Rahim Uddin",
+    "address": {
+      "division": "Dhaka",
+      "district": "Dhaka",
+      "postCode": "1207",
+      "city": "Dhaka",
+      "area": "Mirpur",
+      "roadNumber": "2",
+      "houseNumber": "15A"
+    },
+    "phoneNumber": "01710000001",
+    "alternatePhoneNumber": "01820000001",
+    "email": "rahim@example.com",
+    "whatsappNumber": "01710000001",
+    "debt": 500.0,
+    "lastPurchasedDate": "2025-07-20T14:45:00Z"
+  },
+  {
+    "id": "cus-002",
+    "name": "Hasina Begum",
+    "address": {
+      "division": "Chattogram",
+      "district": "Cox's Bazar",
+      "village": "Khurushkul",
+      "union": "Khurushkul",
+      "upazila": "Sadar"
+    },
+    "phoneNumber": "01910000002",
+    "email": "hasina@example.com",
+    "whatsappNumber": "01910000002",
+    "debt": 0.0,
+    "lastPurchasedDate": "2025-07-21T10:20:00Z"
+  },
+  {
+    "id": "cus-003",
+    "name": "Mizanur Rahman",
+    "address": {
+      "division": "Sylhet",
+      "district": "Sylhet",
+      "city": "Sylhet",
+      "area": "Zindabazar",
+      "roadNumber": "3",
+      "houseNumber": "12"
+    },
+    "phoneNumber": "01610000003",
+    "email": "mizan@example.com",
+    "whatsappNumber": "01610000003",
+    "debt": 1200.0,
+    "lastPurchasedDate": "2025-07-22T12:00:00Z"
+  },
+  {
+    "id": "cus-004",
+    "name": "Rina Akter",
+    "address": {
+      "division": "Khulna",
+      "district": "Bagerhat",
+      "village": "Fakirhat",
+      "union": "Fakirhat",
+      "upazila": "Fakirhat"
+    },
+    "phoneNumber": "01510000004",
+    "email": "rina@example.com",
+    "debt": 0.0,
+    "lastPurchasedDate": "2025-07-19T08:30:00Z"
+  },
+  {
+    "id": "cus-005",
+    "name": "Nayeem Islam",
+    "address": {
+      "division": "Rajshahi",
+      "district": "Rajshahi",
+      "city": "Rajshahi",
+      "area": "Shaheb Bazar",
+      "sector": "5"
+    },
+    "phoneNumber": "01310000005",
+    "alternatePhoneNumber": "01420000005",
+    "email": "nayeem@example.com",
+    "whatsappNumber": "01310000005",
+    "debt": 300.0,
+    "lastPurchasedDate": "2025-07-23T16:15:00Z"
+  },
+  {
+    "id": "cus-007",
+    "name": "Zahid Hasan",
+    "address": {
+      "division": "Dhaka",
+      "district": "Narayanganj",
+      "city": "Narayanganj",
+      "area": "Fatullah",
+      "roadNumber": "11"
+    },
+    "phoneNumber": "01830000007",
+    "email": "zahid@example.com",
+    "debt": 0.0,
+    "lastPurchasedDate": "2025-07-24T18:00:00Z"
+  },
+  {
+    "id": "cus-008",
+    "name": "Salma Akter",
+    "address": {
+      "division": "Mymensingh",
+      "district": "Netrokona",
+      "village": "Birishiri",
+      "union": "Durgapur",
+      "upazila": "Durgapur"
+    },
+    "phoneNumber": "01980000008",
+    "email": "salma@example.com",
+    "debt": 200.0,
+    "lastPurchasedDate": "2025-07-18T09:00:00Z"
+  },
+  {
+    "id": "cus-009",
+    "name": "Tariqul Islam",
+    "address": {
+      "division": "Rangpur",
+      "district": "Dinajpur",
+      "city": "Dinajpur",
+      "area": "Rail Station Road"
+    },
+    "phoneNumber": "01790000009",
+    "whatsappNumber": "01790000009",
+    "email": "tariq@example.com",
+    "debt": 0.0,
+    "lastPurchasedDate": "2025-07-25T11:30:00Z"
+  },
+  {
+    "id": "cus-010",
+    "name": "Shamim Mia",
+    "address": {
+      "division": "Sylhet",
+      "district": "Sunamganj",
+      "village": "Jadukata",
+      "union": "Tahirpur",
+      "upazila": "Tahirpur"
+    },
+    "phoneNumber": "01680000010",
+    "email": "shamim@example.com",
+    "debt": 50.0,
+    "lastPurchasedDate": "2025-07-15T14:10:00Z"
+  }
+]
