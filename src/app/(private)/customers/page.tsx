@@ -150,7 +150,7 @@ export default function CustomersPage() {
   }
 
   return (
-    <div className="p-5 space-y-4">
+    <div className="p-5 space-y-4 max-w-6xl mx-auto">
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <h1 className="text-2xl font-bold">Customers</h1>
         <Button className="bg-[#e51e5a] hover:bg-[#e51e5a]/90">

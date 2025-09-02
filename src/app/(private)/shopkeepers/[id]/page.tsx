@@ -83,7 +83,7 @@ export type Shopkeeper = {
 
 const shopkeeper: Shopkeeper = {
   id: "shop-005",
-  name: "Rahim Store",
+  name: "Rahim",
   contact: {
     phone: "01710000005",
     altPhone: "01820000005",

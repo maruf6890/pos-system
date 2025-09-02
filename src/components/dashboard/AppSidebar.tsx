@@ -14,8 +14,9 @@ import {
 } from "../ui/sidebar";
 
 import Image from "next/image";
-import { useTranslations } from "next-intl";
 
+
+import { useTranslations } from "next-intl";
 
 import {
   Home,
@@ -113,7 +114,7 @@ export const sidebarMenu: MenuItem[] = [
 ];
 
 interface AppSidebarProps {
-  userRole: "common" | "admin"; // receive current user role as prop
+  userRole: "common" | "admin";
 }
 
 export default function AppSidebar({ userRole }: AppSidebarProps) {
@@ -128,10 +129,9 @@ export default function AppSidebar({ userRole }: AppSidebarProps) {
     <Sidebar>
       <SidebarHeader>
         <div className="flex items-center justify-between p-4">
-          <Link href="/" className="text-lg text-purple-600 font-bold">
-            <Image src="/images/Logo.png" alt="Logo" width={180} height={40} />
+          <Link href="/" className="text-lg">
+            
           </Link>
-         
         </div>
       </SidebarHeader>
 

@@ -75,7 +75,7 @@ export default function SystemLogPage() {
   const paginatedLogs = logs.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
 
   return (
-    <div className="p-6 space-y-4">
+    <div className="p-6 max-w-6xl  mx-auto space-y-4">
       <div className="flex justify-between items-center">
         <h2 className="text-xl font-semibold">System Log</h2>
         <div className="flex gap-2">
@@ -109,7 +109,7 @@ export default function SystemLogPage() {
                     checked={selectedRows.length === logs.length && logs.length > 0}
                     onCheckedChange={toggleSelectAll}
                     aria-label="Select all"
-                  />
+                  />985
                 </TableHead>
                 <TableHead className="min-w-[150px]">URL</TableHead>
                 <TableHead className="min-w-[120px]">Activity</TableHead>
