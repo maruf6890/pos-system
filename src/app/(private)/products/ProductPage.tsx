@@ -3,69 +3,185 @@
 import { useState, useEffect } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import {
-  DropdownMenu,
-  DropdownMenuTrigger,
-  DropdownMenuContent,
-  DropdownMenuItem,
-} from "@/components/ui/dropdown-menu";
-import {
-  Card,
-  CardHeader,
-  CardTitle,
-  CardDescription,
-  CardContent,
-  CardFooter,
-} from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import {
-  Pagination,
-  PaginationContent,
-  PaginationItem,
-  PaginationPrevious,
-  PaginationNext,
-  PaginationLink,
-  PaginationEllipsis,
-} from "@/components/ui/pagination";
-import { Star, Plus } from "lucide-react";
+import { Plus } from "lucide-react";
 import ProductCard from "./ProductCard";
 import AppPagination from "@/components/Shop/AppPagination";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
+import { Select, SelectItem, SelectLabel, SelectGroup, SelectContent, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { API_URL } from "@/lib/const";
+import { User } from "@/lib/types";
+import { addToCart } from "./product.action";
+import { toast } from "sonner";
+import { useCartStore } from "@/store/cartStore";
+type Category = {
+  category_id: number;
+  name: string;
+}
+type Brand = {
+  brand_id: number;
+  name: string;
+};
+export interface Product {
+  product_id: number;
+  name: string;
+  price: string;
+  discount_price: string;
+  stock_quantity: number;
+  category_name: string;
+  brand_name: string;
+}
 
-export default function ProductsPage() {
-  const [products, setProducts] = useState<any[]>([]);
-  const [searchTerm, setSearchTerm] = useState("");
-  const [filter, setFilter] = useState("all");
-  const [categoryFilter, setCategoryFilter] = useState("all");
-  const [currentPage, setCurrentPage] = useState(1);
-  const productsPerPage = 8;
-const router = useRouter();
+export default function ProductsPage({user}: {user:User|null}) {
+  const [products, setProducts] = useState<Product[]>([]);
+  const [categories, setCategories] = useState<Category[]>([]);
+  const [brands, setBrands] = useState<Brand[]>([]);
+  const searchParams = useSearchParams();
+  const [total, setTotal] = useState(1);
+  const router = useRouter();
+   const setCount = useCartStore((state) => state.setCount);
+  const validated = validateQueryParams({
+    page: searchParams.get("page"),
+    items_per_page: searchParams.get("item_per_page"),
+    search: searchParams.get("search"),
+    category: searchParams.get("category"),
+    brand: searchParams.get("brand"),
+    type: searchParams.get("type"),
+  });
+ 
+  const { page, items_per_page, search, category,brand, type } = validated;
+  const handleSearch = (value : string ) => {
+    const params = new URLSearchParams(searchParams.toString());
+    if (value) params.set('search', value);
+    else params.delete('search');
+    params.set('page', "1");
+    router.replace(`?${params.toString()}`);
+
+  }
+  const handleCategoryChange = (value: string) => {
+    console.log(value);
+     const params = new URLSearchParams(searchParams.toString());
+     if (value) params.set("category", value);
+     else params.delete("category");
+    params.set("page", "1");
+    router.replace(`?${params.toString()}`);
+    
+  }
+  const handleBrandChange = (value: string) => {
+    console.log("brand "+value);
+    const params = new URLSearchParams(searchParams.toString());
+    if (value) params.set("brand", value);
+    else params.delete("brand");
+    params.set("page", "1");
+    router.replace(`?${params.toString()}`);
+  };
+  const handleTypeChange = (value: string) => {
+    const params = new URLSearchParams(searchParams.toString());
+    if (value) params.set("type", value);
+    else params.delete("type");
+    params.set("page", "1");
+    router.replace(`?${params.toString()}`);
+  };
   useEffect(() => {
-    fetch("/data/product.json")
-      .then((res) => res.json())
-      .then((data) => setProducts(data));
+    const getCategories = async () => {
+      try {
+        const res = await fetch(`${API_URL}/products/category`, {
+          method: "GET",
+          credentials: "include",
+        });
+        const result = await res.json();
+        if (!res.ok) {
+          console.log(result.error);
+          console.log(result.message);
+          return;
+        }
+      
+        setCategories(result.data);
+       
+      } catch (error) {
+        console.log(error);
+    
+      }
+    }
+    getCategories();
+    
   }, []);
 
-  const categories = ["all", ...new Set(products.map((p) => p.category))];
+ useEffect(() => {
+    const geyBrand = async() => {
+     try {
+       const res = await fetch(`${API_URL}/products/brand`, {
+         method: "GET",
+         credentials: "include",
+       });
+       const result = await res.json();
+       if (!res.ok) {
+         console.log(result.error);
+         console.log(result.message);
+         return;
+       }
+       console.log(result.data);
+      setBrands(result.data);
+       
+     } catch (error) {
+       console.log(error);
+    
+     }
+    }
+    geyBrand();
+    
+ }, [])
 
-  const filteredProducts = products.filter((product) => {
-    const matchesSearch =
-      product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      product.category.toLowerCase().includes(searchTerm.toLowerCase());
-    const matchesStock =
-      filter === "all" ||
-      (filter === "inStock" && product.stock > 0) ||
-      (filter === "outOfStock" && product.stock === 0);
-    const matchesCategory =
-      categoryFilter === "all" || product.category === categoryFilter;
+   useEffect(() => {
+     const params = new URLSearchParams();
+     params.set("page", page.toString());
+     params.set("items_per_page", items_per_page.toString());
+     if (search) params.set("search", search);
+     if (type) params.set("type",type );
+     if (category) params.set("category", category);
+    if (brand) params.set("brand", brand);
+     const fetchProduct= async () => {
+     
+       try {
+         const res = await fetch(`${API_URL}/products/?${params}`, {
+           headers: {
+             method: "GET",
+             credentials: "include",
+           },
+         });
+         if (!res.ok) {
+           return;
+         }
+         const result = await res.json();
+         if (!result.success) {
+           console.log(result.message);
+          
+         }
+         console.log(result);
+         setProducts(result.data)
+         const page = Math.ceil(result.total / items_per_page);
+         setTotal(page);
+        
+       
+       } catch (error) {
+         console.log(error);
+       }
+     };
+     fetchProduct();
+   }, [page, items_per_page, search, category, brand, type]);
+  
+  
+  const handleAddToCart = async(product_id: number,price:string) => {
+    if (!user) return;
+    
+    const result = await addToCart(user.id, product_id, Number(price));
+    toast(result.message);
+    if (result.success) {
+      setCount(result.cartCount);
+    }
+    
+  }
 
-    return matchesSearch && matchesStock && matchesCategory;
-  });
 
-  const indexOfLast = currentPage * productsPerPage;
-  const indexOfFirst = indexOfLast - productsPerPage;
-  const currentProducts = filteredProducts.slice(indexOfFirst, indexOfLast);
-  const totalPages = Math.ceil(filteredProducts.length / productsPerPage);
 
   return (
     <div className="w-full   h-screen p-10">
@@ -77,7 +193,9 @@ const router = useRouter();
           </p>
         </div>
         <Button
-          onClick={() => router.push("/product/add")}
+          onClick={() => {
+            router.push("/product/add");
+          }}
           variant="outline"
           className="rounded-lg border bg-[#e51e5a] text-gray-100 hover:bg-[#e51e5a]/70 hover:text-white"
         >
@@ -89,59 +207,126 @@ const router = useRouter();
         <Input
           type="text"
           placeholder="Search products..."
-          value={searchTerm}
+          value={search || ""}
           onChange={(e) => {
-            setSearchTerm(e.target.value);
-            setCurrentPage(1);
+            handleSearch(e.target.value);
           }}
-          className="max-w-sm"
+          className="max-w-sm text-black"
         />
         <div className="flex gap-3">
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button variant="outline">Stock Filter</Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent>
-              <DropdownMenuItem onClick={() => setFilter("all")}>
-                All
-              </DropdownMenuItem>
-              <DropdownMenuItem onClick={() => setFilter("inStock")}>
-                In Stock
-              </DropdownMenuItem>
-              <DropdownMenuItem onClick={() => setFilter("outOfStock")}>
-                Out of Stock
-              </DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
-
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button variant="outline">Category</Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent>
-              {categories.map((cat, idx) => (
-                <DropdownMenuItem
-                  key={idx}
-                  onClick={() => setCategoryFilter(cat)}
-                >
-                  {cat}
-                </DropdownMenuItem>
-              ))}
-            </DropdownMenuContent>
-          </DropdownMenu>
+          <Select
+            value={category || ""}
+            onValueChange={(value) => handleCategoryChange(value)}
+          >
+            <SelectTrigger className="w-[180px]">
+              <SelectValue
+                placeholder={category ? category : "Select Category"}
+              />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectGroup>
+                {categories.map((value) => (
+                  <SelectItem
+                    key={value.category_id}
+                    value={value.category_id.toString()}
+                  >
+                    {value.name}
+                  </SelectItem>
+                ))}
+              </SelectGroup>
+            </SelectContent>
+          </Select>
+          <Select
+            value={brand || ""}
+            onValueChange={(value) => handleBrandChange(value)}
+          >
+            <SelectTrigger className="w-[180px]">
+              <SelectValue placeholder={brand ? brand : "Select Brand"} />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectGroup>
+                {brands.map((value) => (
+                  <SelectItem
+                    key={value.brand_id}
+                    value={value.brand_id.toString()}
+                  >
+                    {value.name}
+                  </SelectItem>
+                ))}
+              </SelectGroup>
+            </SelectContent>
+          </Select>
+          <Select
+            value={type || ""}
+            onValueChange={(value) => handleTypeChange(value)}
+          >
+            <SelectTrigger className="w-[180px]">
+              <SelectValue placeholder={type} />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectGroup>
+                <SelectItem value="in">Stock In</SelectItem>
+                <SelectItem value="out">Stock Out</SelectItem>
+                <SelectItem value="all">All</SelectItem>
+              </SelectGroup>
+            </SelectContent>
+          </Select>
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        {currentProducts.map((product) => (
-          <ProductCard key={product.id} product={product} />
+      <div className="grid grid-cols-1 mb-10 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {products.map((product) => (
+          <ProductCard
+            key={product.product_id}
+            product={product}
+            onSelect={handleAddToCart}
+          />
         ))}
       </div>
-
-      {/* Pagination */}
-      <div className="my-8 flex justify-end">
-        {totalPages > 1 && <AppPagination totalPages={15} />}
-      </div>
+      {total > 1 && <AppPagination totalPages={total} />}
     </div>
   );
+}
+
+
+
+export function validateQueryParams(raw: {
+  page: string | null;
+  items_per_page: string | null;
+  search?: string |null ;
+  category?: string | null;
+  brand?: string | null;
+  type: string |null;
+}) {
+  // Page: positive integer, default 1
+  const page =
+    raw.page && /^\d+$/.test(raw.page) && Number(raw.page) > 0
+      ? Number(raw.page)
+      : 1;
+
+  // Items per page: integer 1–100, default 8
+  let items_per_page = 8;
+  if (raw.items_per_page && /^\d+$/.test(raw.items_per_page)) {
+    const n = Number(raw.items_per_page);
+    if (n >= 1 && n <= 100) items_per_page = n;
+  }
+
+  
+  let search: string="";
+  if (raw.search) {
+    const s = raw.search.trim();
+    if (s.length > 0) search = s.slice(0, 255);
+  }
+
+ 
+  const category: string | null = raw.category || null;
+  const brand: string | null = raw.brand || null;
+  
+  
+  const allowedType = ["in", "out","all"];
+  const type =allowedType.includes(raw.type || "")
+    ? raw.type
+    : "all";
+
+  return { page, items_per_page, search, category,brand, type};
 }

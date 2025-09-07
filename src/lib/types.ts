@@ -27,3 +27,11 @@ type Customer = {
   debt?: number; // amount owed
   lastPurchasedDate?: string; // ISO string (e.g., "2025-07-25T13:20:00Z")
 };
+
+
+export type User = {
+  id: number;
+  name: string;
+  email: string;
+  role: "shopkeeper" | "admin";
+};
