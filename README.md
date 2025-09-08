@@ -1,36 +1,72 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+Sales Management Dashboard
 
-## Getting Started
+A modern web application to manage products, customers, shopkeepers, and sales transactions efficiently. Built with Next.js, TypeScript, Tailwind CSS, and Shadcn UI for a clean and responsive admin interface.
 
-First, run the development server:
+Features
+Core Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Products Management: Add, edit, and view products with details such as price, stock, and discount.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Customer Management: Register and manage customers with contact details and addresses.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Shopkeepers Management: Register and manage shopkeepers with role-based access.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Sales Tracking: Record sales with detailed information:
 
-## Learn More
+Status (pending, review, complete)
 
-To learn more about Next.js, take a look at the following resources:
+Total, Discount, Tax, Payment Type
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Previous Due, Total Paid, Current Due
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Quick Access: Fast access buttons for adding new products, customers, and shopkeepers.
 
-## Deploy on Vercel
+Role-Based Access Control:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Common users see only allowed menus.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Admin users see all menus.
+
+UI Features
+
+Collapsible sidebar with nested menus.
+
+Filters for sales data by:
+
+Shopkeeper Name
+
+Customer Name
+
+Due Amount
+
+Status
+
+Search functionality for customers.
+
+Table and input components built with Shadcn UI.
+
+Responsive and modern design.
+
+Other Features
+
+Favicon support for web, iOS, and Android devices.
+
+Data validation using Zod.
+
+Forms built with React Hook Form.
+
+Toast notifications with Sonner.
+
+Tech Stack
+
+Frontend: Next.js (App Router), React, TypeScript, Tailwind CSS, Shadcn UI
+
+Forms & Validation: React Hook Form, Zod
+
+Notifications: Sonner
+
+Icons: Lucide React
+
+API Requests: Fetch API
+
+Routing: Next.js built-in routing
