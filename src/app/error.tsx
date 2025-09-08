@@ -5,7 +5,6 @@ import BasicFooter from "@/components/utils/BasicFooter";
 import BasicHeader from "@/components/utils/BasicHeader";
 import { AlertCircle, Home } from "lucide-react";
 import Link from "next/link";
-
 export default function Error() {
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col">

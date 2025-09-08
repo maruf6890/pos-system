@@ -5,21 +5,21 @@ import React from 'react'
 import { Notification } from './Notification';
 import { ProfileDropdown } from './ProfileDropdown';
 import { Cart } from './Cart';
-import { getCookie } from '@/lib/cookies';
+import { getCookie, hasCookie } from '@/lib/cookies';
 
 export default async function layout({children}: {children: React.ReactNode}) {
   const userCookie = await getCookie("user");
   
  const user = userCookie?.value ? JSON.parse(userCookie.value) : null;
-  console.log(user);
-    const token="jeff"
+  const token = await hasCookie('token');
+ 
     if (!token) {
          redirect('/login');
     } else {
        return (
          <div className="flex h-full">
            <SidebarProvider>
-             <AppSidebar userRole="admin"/>
+             <AppSidebar role={user.role} />
              <div className="flex-1 ">
                <header className="flex justify-between p-5">
                  <SidebarTrigger />

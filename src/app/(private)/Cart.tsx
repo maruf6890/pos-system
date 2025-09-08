@@ -27,7 +27,6 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import CartSearchUser, { CustomerSearchData } from "./CartUserSearch";
-import { User } from "@/lib/types";
 
 export interface CartItem {
   cart_id: number;

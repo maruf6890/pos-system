@@ -1,161 +1,206 @@
-"use client";
-
-import React from "react";
-import Link from "next/link";
+"use client"
+import React, { ReactNode, useEffect, useState } from "react";
 import {
   Sidebar,
   SidebarContent,
   SidebarFooter,
   SidebarGroup,
   SidebarGroupContent,
+  SidebarGroupLabel,
   SidebarHeader,
+  SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
+  SidebarMenuSub,
 } from "../ui/sidebar";
-
-import Image from "next/image";
-
-
-import { useTranslations } from "next-intl";
-
+import Link from "next/link";
 import {
-  Home,
-  CreditCard,
-  Users,
-  Building,
-  BarChart3,
-  MessageSquare,
-  Ticket,
-  ShoppingCart,
-  ShoppingBasket,
+  FileText,
   ShoppingBag,
+  Users,
+  User,
+  Percent,
+  FileClock,
+  File,
+  ClipboardList,
+  Plus,
 } from "lucide-react";
-
-type MenuItem = {
-  id: string;
-  titleKey: string;
-  url?: string;
-  icon: React.ElementType;
-  role: "common" | "admin";
-};
-
-export const sidebarMenu: MenuItem[] = [
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "../ui/collapsible";
+import { Button } from "../ui/button";
+import Image from "next/image";
+export const services:MenuItem[] = [
   {
-    id: "dashboard",
-    titleKey: "dashboard",
-    url: "/",
-    icon: Home,
+    name: "Products",
+    href: "/",
+    icon: <ShoppingBag className="w-5 h-5" />,
     role: "common",
   },
   {
-    id: "pos",
-    titleKey: "pos",
-    url: "/pos",
-    icon: ShoppingCart,
-    role: "common",
-  },
-
-  {
-    id: "products",
-    titleKey: "products",
-    url: "/products",
-    icon: ShoppingBag,
+    name: "Customer",
+    href: "/customers",
+    icon: <Users className="w-5 h-5 text-gray-700" />,
     role: "common",
   },
   {
-    id: "customers",
-    titleKey: "customers",
-    url: "/customers",
-    icon: Users,
-    role: "common",
-  },
-  {
-    id: "supplier",
-    titleKey: "supplier",
-    url: "/supplier",
-    icon: Building,
+    name: "Shopkeepers",
+    href: "/shopkeepers",
+    icon: <User className="w-5 h-5" />,
     role: "admin",
   },
   {
-    id: "reports",
-    titleKey: "reports",
-    url: "/reports",
-    icon: BarChart3,
-    role: "admin",
-  },
-  {
-    id: "selling",
-    titleKey: "selling",
-    url: "/selling",
-    icon: CreditCard,
+    name: "Sales",
+    icon: <Percent className="w-5 h-5" />,
     role: "common",
+    href:"#",
+    children: [
+      {
+        name: "My Sales",
+        href: "/sales/my-sales",
+        icon: <File className="w-5 h-5" />,
+        role: "common",
+      },
+      {
+        name: "Pending Sales",
+        href: "/sales/pending",
+        icon: <FileClock className="w-5 h-5" />,
+        role: "common",
+      },
+      {
+        name: "Sales Report",
+        href: "/sales/report",
+        icon: <FileText className="w-5 h-5" />,
+        role: "admin",
+      },
+    ],
   },
   {
-    id: "shopkeepers",
-    titleKey: "shopkeepers",
-    url: "/shopkeepers",
-    icon: Users,
+    name: "Logs",
+    href: "/logs",
+    icon: <ClipboardList className="w-5 h-5" />,
     role: "admin",
-  },
-  {
-    id: "logs",
-    titleKey: "logs",
-    url: "/logs",
-    icon: MessageSquare,
-    role: "admin",
-  },
-  {
-    id: "sellingHistory",
-    titleKey: "sellingHistory",
-    url: "/selling-history",
-    icon: Ticket,
-    role: "common",
   },
 ];
 
-interface AppSidebarProps {
-  userRole: "common" | "admin";
+export const QuickAccessMenu:MenuItem[] = [
+  {
+    name: "Add Product",
+    href: "/product/add",
+    icon: <Plus className="w-5 h-5" />,
+    role: "common",
+  },
+  {
+    name: "Add Customer",
+    href: "/customers/add",
+    icon: <Plus className="w-5 h-5" />,
+    role: "common",
+  },
+  {
+    name: "Add Shopkeeper",
+    href: "/shopkeepers/add",
+    icon: <Plus className="w-5 h-5" />,
+    role: "admin",
+  },
+];
+
+type Role = "common" | "admin";
+
+
+export interface MenuItem {
+  name: string;
+  href: string;
+  icon: ReactNode;
+  role: Role;
+  children?: MenuItem[];
 }
 
-export default function AppSidebar({ userRole }: AppSidebarProps) {
-  const t = useTranslations("Menu");
+export function filterMenu(menu: MenuItem[], role: Role): MenuItem[] {
+  if (role === "admin") {
+    return menu; 
+  }
 
-  // Filter menu based on userRole
-  const filteredMenu = sidebarMenu.filter(
-    (item) => item.role === "common" || item.role === userRole
-  );
+  return menu
+    .filter(item => item.role === "common")
+    .map((item: MenuItem) => ({
+      ...item,
+      children: item.children ? filterMenu(item.children, role) : undefined,
+    }));
+}
+
+
+//recursive rendering of menu
+function renderMenu(items: typeof services) {
+  return items.map((item, idx) => {
+    if (item.children) {
+      return (
+        <Collapsible key={idx}>
+          <CollapsibleTrigger asChild>
+            <SidebarMenuButton asChild>
+              <Link href="#">
+                {item.icon}
+                <span>{item.name}</span>
+              </Link>
+            </SidebarMenuButton>
+          </CollapsibleTrigger>
+          <CollapsibleContent>
+            <SidebarMenuSub>{renderMenu(item.children)}</SidebarMenuSub>
+          </CollapsibleContent>
+        </Collapsible>
+      );
+    }
+
+    return (
+      <SidebarMenuItem key={idx}>
+        <SidebarMenuButton
+          className="text-md font-medium text-gray-800"
+          asChild
+        >
+          <Link href={item.href}>
+            {item.icon}
+            <span>{item.name}</span>
+          </Link>
+        </SidebarMenuButton>
+      </SidebarMenuItem>
+    );
+  });
+}
+
+export default function AppSidebar({ role }: { role: string }) {
+  const [menuType, setMenuType] = useState<"admin" | "common">("common");
+  
+ 
+  useEffect(() => {
+    if(role=="admin") setMenuType("admin")
+  }, [role]);
+   const filteredServices = filterMenu(services, menuType);
+   const filteredQuickAccess = filterMenu(QuickAccessMenu, menuType);
 
   return (
     <Sidebar>
-      <SidebarHeader>
-        <div className="flex items-center justify-between p-4">
-          <Link href="/" className="text-lg">
-            
-          </Link>
-        </div>
+      <SidebarHeader className="p-3">
+        <Image
+                   src="/images/logo.png"
+                   alt="Logo"
+                   width={200}
+                   height={40}
+                   className=""
+                 />
       </SidebarHeader>
-
       <SidebarContent>
         <SidebarGroup>
-          <SidebarGroupContent className="list-none">
-            {filteredMenu.map((item) => (
-              <SidebarMenuItem key={item.id}>
-                <SidebarMenuButton asChild>
-                  <Link
-                    href={item.url || "#"}
-                    className="flex items-center py-5 px-4 hover:bg-muted/30 rounded-md transition-all"
-                  >
-                    <item.icon className="w-5 h-5 mr-2" />
-                    {t(item.titleKey)}
-                  </Link>
-                </SidebarMenuButton>
-              </SidebarMenuItem>
-            ))}
+          <SidebarMenu>{renderMenu(filteredServices)}</SidebarMenu>
+        </SidebarGroup>
+        <SidebarGroup>
+          <SidebarGroupLabel>Quick Access</SidebarGroupLabel>
+          <SidebarGroupContent>
+            <SidebarMenu>{renderMenu(filteredQuickAccess)}</SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
-
-      <SidebarFooter />
+      <SidebarFooter><Button >Logout</Button></SidebarFooter>
     </Sidebar>
   );
 }
