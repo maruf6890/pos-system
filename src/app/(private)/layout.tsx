@@ -25,7 +25,7 @@ export default async function layout({children}: {children: React.ReactNode}) {
                  <SidebarTrigger />
                  <div className="flex gap-3 justify-between">
                    <Notification />
-                   <Cart/>
+                   <Cart shopkeeper_id={user.id}/>
 
                    
                    
