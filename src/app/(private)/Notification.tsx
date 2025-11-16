@@ -25,7 +25,7 @@ const mockData: Notification[] = Array.from({ length: 15 }, (_, i) => ({
   title: `Notification ${i + 1}`,
   description: `This is the detail of notification ${i + 1}.`,
   time: `${i + 1}h ago`,
-  highlight: i === 1, // Highlight one as example
+  highlight: i === 1, // highlight one as example
 }));
 
 export function Notification() {
@@ -83,7 +83,7 @@ export function Notification() {
                 n.highlight && "bg-purple-900/20"
               )}
             >
-              <h5 className="text-sm  font-medium">{n.title}</h5>
+              <h5 className="text-sm font-medium">{n.title}</h5>
               <p className="text-xs text-muted-foreground">{n.description}</p>
               <p className="text-[10px] text-right text-muted-foreground">
                 {n.time}

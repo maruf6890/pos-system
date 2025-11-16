@@ -23,7 +23,7 @@ export function TopProductsTable() {
   const [products, setProducts] = useState<Product[]>([]);
 
   useEffect(() => {
-    // Mock fetch - replace with actual API call
+    
     async function loadProducts() {
       const response = await fetch("/data/product.json");
       const data = await response.json();

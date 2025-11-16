@@ -1,5 +1,4 @@
 "use client";
-
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -56,7 +55,7 @@ export function ProfileDropdown() {
           Profile
         </DropdownMenuItem>
         <DropdownMenuItem className="cursor-pointer">
-          <LogOut className="w-4 h-4 mr-2" />
+          <LogOut className="w-4.5 h-4 mr-2" />
           Logout
         </DropdownMenuItem>
       </DropdownMenuContent>
