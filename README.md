@@ -45,3 +45,11 @@ A modern web application to manage products, customers, shopkeepers, and sales t
 - **Icons:** Lucide React
 - **API Requests:** Fetch API
 - **Routing:** Next.js built-in routing
+
+## Future Advancement 
+-LLM-Powered Analytics Module
+-Android Ordering System
+-Email Notifi cation System
+-Batch Processing System
+-In-Memory Database Integration
+-Microservices Architecture
